@@ -111,7 +111,8 @@ export default function Inbox() {
         )}
       </aside>
 
-      <section className="detail-pane" aria-label="Details">
+      {/* keyed so each selection starts scrolled to the top */}
+      <section className="detail-pane" aria-label="Details" key={selection?.kind === "email" ? selection.id : selection?.kind}>
         <div className="detail-inner">
           {selection?.kind === "compose" ? (
             <Compose
