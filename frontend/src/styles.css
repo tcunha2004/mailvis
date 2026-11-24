@@ -1095,3 +1095,7 @@ details.trace[open] summary svg {
     transition-duration: 0.01ms !important;
   }
 }
+
+.field .segmented {
+  justify-self: start;
+}

@@ -141,7 +141,12 @@ def give_feedback(email_id: UUID, body: FeedbackIn, user_id: UserId, graph: Grap
         if email["status"] != new_status:
             # ponytail: a trashed->saved correction doesn't re-run the executor, so the email
             # stays without priority/summary. Re-run the graph here if that matters.
-            db.update_email(str(email_id), status=new_status)
+            original = email["triage_reasoning"] or "n/a"
+            db.update_email(
+                str(email_id),
+                status=new_status,
+                triage_reasoning=f"Corrected by you. The agent originally said: {original}",
+            )
 
     return FeedbackOut(
         email=get_or_404(user_id, email_id),  # type: ignore[arg-type]

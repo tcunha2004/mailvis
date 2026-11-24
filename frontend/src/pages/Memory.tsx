@@ -34,7 +34,7 @@ export default function Memory() {
               It searches them before prioritizing new emails.
             </p>
           </div>
-          {memories && memories.length > 0 && <span className="badge">{memories.length} facts</span>}
+          {memories && memories.length > 0 && <span className="badge">{memories.length} {memories.length === 1 ? "fact" : "facts"}</span>}
         </header>
 
         {error && <Notice kind="error">{error}</Notice>}
